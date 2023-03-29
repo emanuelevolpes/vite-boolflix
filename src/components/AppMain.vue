@@ -5,5 +5,5 @@
 </script>
 
 <template>
-    main
+
 </template>

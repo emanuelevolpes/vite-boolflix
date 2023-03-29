@@ -12,12 +12,18 @@
             return {
                 store
             }
+        },
+        methods: {
+            searchFilms() {
+                console.log('ho cliccato il bottone per cercare')
+                console.log(this.store.searchKey)
+            }
         }
     }
 </script>
 
 <template>
-    <Header />
+    <Header @search="searchFilms"/>
     <Main />
 </template>
 
