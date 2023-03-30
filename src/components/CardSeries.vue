@@ -1,16 +1,16 @@
 <script>
 import CountryFlag from 'vue-country-flag-next'
 export default {
-    name: 'CardFilms',
+    name: 'CardSeries',
     props: {
-        infoFilm: Object
+        infoSeries: Object
     },
     components: {
         CountryFlag
     },
     computed: {
         getLanguage() {
-            switch (this.infoFilm.original_language) {
+            switch (this.infoSeries.original_language) {
                 case 'en':
                     return 'gb';
                 case 'he':
@@ -28,7 +28,7 @@ export default {
                 case 'cs':
                     return 'cz';
                 default:
-                    return this.infoFilm.original_language;
+                    return this.infoSeries.original_language;
             }
         }
     }
@@ -37,9 +37,9 @@ export default {
 
 <template>
     <div>
-        <li>Titolo: {{ infoFilm.title }}</li>
-        <li>Titolo originale: {{ infoFilm.original_title }}</li>
+        <li>Titolo: {{ infoSeries.title }}</li>
+        <li>Titolo originale: {{ infoSeries.original_title }}</li>
         <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
-        <li>Voto: {{ infoFilm.vote_average }}</li>
+        <li>Voto: {{ infoSeries.vote_average }}</li>
     </div>
 </template>
