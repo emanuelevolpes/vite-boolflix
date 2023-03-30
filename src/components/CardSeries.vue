@@ -37,8 +37,8 @@ export default {
 
 <template>
     <div>
-        <li>Titolo: {{ infoSeries.title }}</li>
-        <li>Titolo originale: {{ infoSeries.original_title }}</li>
+        <li>Titolo: {{ infoSeries.name }}</li>
+        <li>Titolo originale: {{ infoSeries.original_name }}</li>
         <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
         <li>Voto: {{ infoSeries.vote_average }}</li>
     </div>
