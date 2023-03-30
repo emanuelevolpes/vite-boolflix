@@ -37,6 +37,7 @@ export default {
 
 <template>
     <div>
+        <li><img :src="`https://image.tmdb.org/t/p/w300${infoSeries.backdrop_path}`" alt="copertina"></li>
         <li>Titolo: {{ infoSeries.name }}</li>
         <li>Titolo originale: {{ infoSeries.original_name }}</li>
         <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>

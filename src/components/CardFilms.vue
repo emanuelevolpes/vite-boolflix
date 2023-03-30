@@ -37,6 +37,7 @@ export default {
 
 <template>
     <div>
+        <li><img :src="`https://image.tmdb.org/t/p/w300${infoFilm.backdrop_path}`" alt="copertina"></li>
         <li>Titolo: {{ infoFilm.title }}</li>
         <li>Titolo originale: {{ infoFilm.original_title }}</li>
         <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
