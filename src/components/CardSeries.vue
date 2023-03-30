@@ -30,6 +30,9 @@ export default {
                 default:
                     return this.infoSeries.original_language;
             }
+        },
+        getVote() {
+            return Math.ceil(this.infoSeries.vote_average / 2);
         }
     }
 }
@@ -41,6 +44,9 @@ export default {
         <li>Titolo: {{ infoSeries.name }}</li>
         <li>Titolo originale: {{ infoSeries.original_name }}</li>
         <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
-        <li>Voto: {{ infoSeries.vote_average }}</li>
+        <li>Voto: {{ getVote }}
+            <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
+            <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - getVote" />
+        </li>
     </div>
 </template>

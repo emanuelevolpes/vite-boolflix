@@ -1,5 +1,6 @@
 <script>
 import CountryFlag from 'vue-country-flag-next'
+
 export default {
     name: 'CardFilms',
     props: {
@@ -30,6 +31,9 @@ export default {
                 default:
                     return this.infoFilm.original_language;
             }
+        },
+        getVote() {
+            return Math.ceil(this.infoFilm.vote_average / 2);
         }
     }
 }
@@ -41,6 +45,9 @@ export default {
         <li>Titolo: {{ infoFilm.title }}</li>
         <li>Titolo originale: {{ infoFilm.original_title }}</li>
         <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
-        <li>Voto: {{ infoFilm.vote_average }}</li>
+        <li>Voto: {{ getVote }}
+            <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
+            <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - getVote" />
+        </li>
     </div>
 </template>
