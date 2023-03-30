@@ -1,11 +1,11 @@
 <script>
 import { store } from '../store'
-import CardApp from './CardApp.vue';
+import CardFilms from './CardFilms.vue';
 export default {
     name: 'Main',
     components: {
-        CardApp
-    },
+    CardFilms
+},
     data() {
         return {
             store
@@ -17,7 +17,7 @@ export default {
 <template>
     <div>
         <ul v-for="films in store.resultSearchFilm">
-            <CardApp :info="films" />
+            <CardFilms :info="films" />
         </ul>
     </div>
 </template>

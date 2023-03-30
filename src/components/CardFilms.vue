@@ -36,8 +36,10 @@ export default {
 </script>
 
 <template>
-    <li>Titolo: {{ info.title }}</li>
-    <li>Titolo originale: {{ info.original_title }}</li>
-    <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
-    <li>Voto: {{ info.vote_average }}</li>
+    <div>
+        <li>Titolo: {{ info.title }}</li>
+        <li>Titolo originale: {{ info.original_title }}</li>
+        <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
+        <li>Voto: {{ info.vote_average }}</li>
+    </div>
 </template>
