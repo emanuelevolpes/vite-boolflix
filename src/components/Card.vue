@@ -33,6 +33,12 @@ export default {
         },
         getVote() {
             return Math.ceil(this.info.vote_average / 2);
+        },
+        title() {
+            return this.info.title || this.info.name;
+        },
+        originalTitle() {
+            return this.info.original_title || this.info.original_name;
         }
     }
 }
@@ -40,19 +46,14 @@ export default {
 
 <template>
     <div>
-        <li><img :src="`https://image.tmdb.org/t/p/w300${info.backdrop_path}`" alt="copertina"></li>
-        <li>Titolo: {{ info.title }}</li>
-        <li>Titolo originale: {{ info.original_title }}</li>
-        <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
-        <li>Voto: {{ getVote }}
-            <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
-            <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - getVote" />
+        <li v-if="info.backdrop_path !== null">
+            <img :src="`https://image.tmdb.org/t/p/w342${info.backdrop_path}`" alt="copertina">
         </li>
-    </div>
-    <div>
-        <li><img :src="`https://image.tmdb.org/t/p/w300${info.backdrop_path}`" alt="copertina"></li>
-        <li>Titolo: {{ info.name }}</li>
-        <li>Titolo originale: {{ info.original_name }}</li>
+        <li v-else>
+            <img src="../../public/img/image-not-found.png" style="width: 342px; height: 400px; object-fit: cover;" alt="img-not-found">
+        </li>
+        <li>Titolo: {{ title }}</li>
+        <li>Titolo originale: {{ originalTitle }}</li>
         <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
         <li>Voto: {{ getVote }}
             <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
