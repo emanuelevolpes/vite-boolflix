@@ -16,15 +16,25 @@ export default {
     },
     methods: {
         search() {
-            //chiamata api
+            //chiamata api Film
             axios
-                .get(`https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=${store.searchKey}`)
+                .get(this.store.config.urlApi + this.store.config.searchMovie, {
+                    params: {
+                        api_key: this.store.config.apiKey,
+                        query: this.store.searchKey
+                    }
+                })
                 .then((response) => {
                     this.store.resultSearchFilm = response.data.results
                 })
-
+            //chiamata api SerieTv
             axios
-                .get(`https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&query=${store.searchKey}`)
+                .get(this.store.config.urlApi + this.store.config.searchSeries, {
+                    params: {
+                        api_key: this.store.config.apiKey,
+                        query: this.store.searchKey
+                    }
+                })
                 .then((response) => {
                     this.store.resultSearchSeries = response.data.results
                 })
