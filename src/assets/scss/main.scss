@@ -1,0 +1,5 @@
+@use './_partial/reset.scss' as *;
+@use './_partial/common.scss' as *;
+
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
