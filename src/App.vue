@@ -44,8 +44,18 @@ export default {
 </script>
 
 <template>
-    <Header @search="search" />
-    <Main />
+    <body>
+        <Header @search="search" />
+        <Main />
+    </body>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+@use './assets/scss/_partial/common' as *;
+body {
+    background-color: $primary-color;
+    height: 100vh;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+</style>

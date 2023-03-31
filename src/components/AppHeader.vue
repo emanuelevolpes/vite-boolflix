@@ -12,26 +12,53 @@ export default {
 </script>
 
 <template>
-    <div class="nav-container">
-        <!-- logo -->
-        <img class="logo" src="../../public/img/BoolfliX_-_Logo-removebg-preview.png" alt="logo">
-        <!-- serch box -->
-        <div class="search-box">
-            <input type="search" placeholder="Inserisci il titolo" id="searchBar" v-model="store.searchKey">
-            <button type="button" @click.prevent="$emit('search')">Cerca</button>
+    <header>
+        <div class="nav-container">
+            <!-- logo -->
+            <img class="logo" src="../../public/img/BoolfliX_-_Logo-removebg-preview.png" alt="logo">
+            <!-- serch box -->
+            <div class="search-box">
+                <input type="search" placeholder="Inserisci il titolo" id="searchBar" v-model="store.searchKey">
+                <button type="button" @click.prevent="$emit('search')">Cerca</button>
+            </div>
         </div>
-    </div>
+        <!-- navbar -->
+        <div class="navbar">
+            <a href="#" class="nav-link">
+                <font-awesome-icon class="icon" icon="fa-solid fa-house" />
+                <span class="nav-link-title">Home</span>
+            </a>
+            <a href="#" class="nav-link">
+                <font-awesome-icon class="icon" icon="fa-brands fa-hotjar" />
+                <span class="nav-link-title">Trending</span>
+            </a>
+            <a href="#" class="nav-link nav-active">
+                <font-awesome-icon class="icon" icon="fa-regular fa-compass" />
+                <span class="nav-link-title">Explore</span>
+            </a>
+            <a href="#" class="nav-link">
+                <font-awesome-icon class="icon" icon="fa-solid fa-tv" />
+                <span class="nav-link-title">Movies</span>
+            </a>
+            <a href="#" class="nav-link">
+                <font-awesome-icon class="icon" icon="fa-regular fa-heart" />
+                <span class="nav-link-title">Favourite</span>
+            </a>
+        </div>
+    </header>
 </template>
 
 <style lang="scss" scoped>
 @use '../assets/scss/_partial/common' as *;
+
 .nav-container {
     padding: 10px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $primary-color;
+    position: fixed;
+    top: 0%;
 
     .logo {
         width: 300px;
@@ -45,12 +72,50 @@ export default {
         input {
             border: none;
             padding: 5px;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
         }
 
         button {
             border: none;
             padding: 5px;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
         }
+    }
+}
+
+.navbar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 18px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.1rem;
+
+    .nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #b7b7b7;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+            transition: 0.3s all linear;
+            transform: scale(1.1);
+        }
+
+        .icon {
+            font-size: 1.6rem;
+        }
+    }
+
+    .nav-link.nav-active {
+        color: white;
+        transition: 0.3s all linear;
+        transform: scale(1.3);
     }
 }
 </style>
