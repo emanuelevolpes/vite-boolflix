@@ -45,7 +45,7 @@ export default {
 
             <!-- serch box -->
             <div class="search-box">
-                <input type="search" placeholder="Inserisci il titolo" id="searchBar" v-model="store.searchKey">
+                <input type="search" @keyup.enter="$emit('search')" placeholder="Inserisci il titolo" id="searchBar" v-model="store.searchKey">
                 <button type="button" @click.prevent="$emit('search')">Cerca</button>
             </div>
         </div>
