@@ -37,6 +37,7 @@ export default {
 
 body {
     background-color: $secondary_color;
+    padding-top: 100px;
 
     .container {
         display: flex;
@@ -44,14 +45,6 @@ body {
         row-gap: 30px;
         padding: 20px;
         text-align: center;
-
-        h1 {
-            background-color: $primary_color;
-            color: white;
-            border-radius: 10px;
-            padding: 10px;
-
-        }
 
         .films {
             display: flex;

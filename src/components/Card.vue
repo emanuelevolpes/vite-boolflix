@@ -45,7 +45,7 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container" v-cloak>
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -64,7 +64,8 @@ export default {
                     <li class="content"><strong>Titolo:</strong> {{ title }}</li>
                     <li class="content"><strong>Titolo originale:</strong> {{ originalTitle }}</li>
                     <li class="content overview"><strong>Overview:</strong> {{ info.overview }}</li>
-                    <li class="content"><strong>Lingua originale:</strong> <country-flag :country='getLanguage' size='small' /></li>
+                    <li class="content"><strong>Lingua originale:</strong><country-flag :country='getLanguage'
+                            size='small' /></li>
                     <li class="content"><strong>Voto:</strong> {{ getVote }}
                         <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
                         <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - getVote" />
@@ -78,6 +79,10 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/_partial/common' as *;
 @use '../assets/scss/_partial/reset' as *;
+
+[v-cloak] {
+    display: none;
+}
 
 .container {
 
@@ -152,7 +157,7 @@ export default {
         align-items: center;
 
         .content {
-        overflow: hidden;
+            overflow: hidden;
         }
     }
 }
