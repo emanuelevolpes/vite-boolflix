@@ -45,19 +45,115 @@ export default {
 </script>
 
 <template>
-    <div>
-        <li v-if="info.backdrop_path !== null">
-            <img :src="`https://image.tmdb.org/t/p/w342${info.backdrop_path}`" alt="copertina">
-        </li>
-        <li v-else>
-            <img src="../../public/img/image-not-found.png" style="width: 342px; height: 400px; object-fit: cover;" alt="img-not-found">
-        </li>
-        <li>Titolo: {{ title }}</li>
-        <li>Titolo originale: {{ originalTitle }}</li>
-        <li>Lingua originale: {{ getLanguage }} <country-flag :country='getLanguage' size='small' /></li>
-        <li>Voto: {{ getVote }}
-            <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
-            <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - getVote" />
-        </li>
+    <div class="container">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="bg-image">
+                        <li v-show="info.backdrop_path !== null">
+                            <img :src="`https://image.tmdb.org/t/p/w342${info.backdrop_path}`" alt="copertina">
+                        </li>
+                    </div>
+                    <div class="bg-image">
+                        <li v-show="info.backdrop_path === null">
+                            <img src="../../public/img/image-not-found.png" alt="img-not-found">
+                        </li>
+                    </div>
+                </div>
+                <div class="flip-card-back">
+                    <li class="content"><strong>Titolo:</strong> {{ title }}</li>
+                    <li class="content"><strong>Titolo originale:</strong> {{ originalTitle }}</li>
+                    <li class="content overview"><strong>Overview:</strong> {{ info.overview }}</li>
+                    <li class="content"><strong>Lingua originale:</strong> <country-flag :country='getLanguage' size='small' /></li>
+                    <li class="content"><strong>Voto:</strong> {{ getVote }}
+                        <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
+                        <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - getVote" />
+                    </li>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+@use '../assets/scss/_partial/common' as *;
+@use '../assets/scss/_partial/reset' as *;
+
+.container {
+
+    li {
+        list-style: none;
+    }
+
+    .flip-card {
+        background-color: transparent;
+        perspective: 1000px;
+        text-align: center;
+        height: 400px;
+        cursor: pointer;
+
+
+        .bg-image img {
+            width: 342px;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 5px;
+        }
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+    }
+
+    .flip-card:focus {
+        outline: 0;
+    }
+
+    .flip-card:hover .flip-card-inner,
+    .flip-card:focus .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $tertiary-color;
+        border: 2px solid $primary_color;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-front {
+        color: black;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flip-card-back {
+        color: white;
+        transform: rotateY(180deg);
+        padding: 10px;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .content {
+        overflow: hidden;
+        }
+    }
+}
+</style>

@@ -52,8 +52,8 @@ export default {
 
 <style lang="scss" scoped>
 @use './assets/scss/_partial/common' as *;
+@use './assets/scss/_partial/reset' as *;
 body {
-    background-color: $primary-color;
     height: 100vh;
     overflow: scroll;
     scrollbar-width: none;

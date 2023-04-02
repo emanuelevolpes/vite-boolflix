@@ -16,34 +16,38 @@ export default {
         <div class="nav-container">
             <!-- logo -->
             <img class="logo" src="../../public/img/BoolfliX_-_Logo-removebg-preview.png" alt="logo">
+
+
+            <!-- navbar -->
+            <div class="navbar">
+                <a href="#" class="nav-link">
+                    <font-awesome-icon class="icon" icon="fa-solid fa-house" />
+                    <span class="nav-link-title">Home</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <font-awesome-icon class="icon" icon="fa-brands fa-hotjar" />
+                    <span class="nav-link-title">Trending</span>
+                </a>
+                <a href="#" class="nav-link nav-active">
+                    <font-awesome-icon class="icon" icon="fa-regular fa-compass" />
+                    <span class="nav-link-title">Explore</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <font-awesome-icon class="icon" icon="fa-solid fa-tv" />
+                    <span class="nav-link-title">Movies</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <font-awesome-icon class="icon" icon="fa-regular fa-heart" />
+                    <span class="nav-link-title">Favourite</span>
+                </a>
+            </div>
+
+
             <!-- serch box -->
             <div class="search-box">
                 <input type="search" placeholder="Inserisci il titolo" id="searchBar" v-model="store.searchKey">
                 <button type="button" @click.prevent="$emit('search')">Cerca</button>
             </div>
-        </div>
-        <!-- navbar -->
-        <div class="navbar">
-            <a href="#" class="nav-link">
-                <font-awesome-icon class="icon" icon="fa-solid fa-house" />
-                <span class="nav-link-title">Home</span>
-            </a>
-            <a href="#" class="nav-link">
-                <font-awesome-icon class="icon" icon="fa-brands fa-hotjar" />
-                <span class="nav-link-title">Trending</span>
-            </a>
-            <a href="#" class="nav-link nav-active">
-                <font-awesome-icon class="icon" icon="fa-regular fa-compass" />
-                <span class="nav-link-title">Explore</span>
-            </a>
-            <a href="#" class="nav-link">
-                <font-awesome-icon class="icon" icon="fa-solid fa-tv" />
-                <span class="nav-link-title">Movies</span>
-            </a>
-            <a href="#" class="nav-link">
-                <font-awesome-icon class="icon" icon="fa-regular fa-heart" />
-                <span class="nav-link-title">Favourite</span>
-            </a>
         </div>
     </header>
 </template>
@@ -52,13 +56,12 @@ export default {
 @use '../assets/scss/_partial/common' as *;
 
 .nav-container {
+    background-color: $primary_color;
     padding: 10px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 0%;
 
     .logo {
         width: 300px;
@@ -86,13 +89,8 @@ export default {
 }
 
 .navbar {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 18px;
     display: flex;
-    flex-direction: column;
-    row-gap: 2.1rem;
+    gap: 30px;
 
     .nav-link {
         display: flex;
@@ -109,6 +107,10 @@ export default {
 
         .icon {
             font-size: 1.6rem;
+        }
+
+        .nav-link-title {
+            font-size: 0.7rem;
         }
     }
 
