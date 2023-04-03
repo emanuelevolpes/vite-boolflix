@@ -159,6 +159,10 @@ export default {
         .content {
             overflow: hidden;
         }
+
+        .content.overview {
+            max-height: 50%;
+        }
     }
 }
 </style>

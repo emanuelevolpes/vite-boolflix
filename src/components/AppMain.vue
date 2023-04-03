@@ -10,6 +10,11 @@ export default {
         return {
             store
         }
+    },
+    computed: {
+        results() {
+            return [...this.store.resultSearchFilm, ...this.store.resultSearchSeries]
+        }
     }
 }
 </script>
@@ -17,14 +22,9 @@ export default {
 <template>
     <body>
         <div class="container">
-            <div class="films">
-                <ul v-for="films in store.resultSearchFilm">
-                    <Card :info="films" />
-                </ul>
-            </div>
-            <div class="series">
-                <ul v-for="series in store.resultSearchSeries">
-                    <Card :info="series" />
+            <div class="cards">
+                <ul v-for="result in this.results">
+                    <Card :info="result" />
                 </ul>
             </div>
         </div>
@@ -46,16 +46,7 @@ body {
         padding: 20px;
         text-align: center;
 
-        .films {
-            display: flex;
-            flex-wrap: wrap;
-
-            ul {
-                flex-basis: calc(100% / 3);
-            }
-        }
-
-        .series {
+        .cards {
             display: flex;
             flex-wrap: wrap;
 

@@ -16,8 +16,6 @@ export default {
         <div class="nav-container">
             <!-- logo -->
             <img class="logo" src="../../public/img/BoolfliX_-_Logo-removebg-preview.png" alt="logo">
-
-
             <!-- navbar -->
             <div class="navbar">
                 <a href="#" class="nav-link">
@@ -41,8 +39,6 @@ export default {
                     <span class="nav-link-title">Favourite</span>
                 </a>
             </div>
-
-
             <!-- serch box -->
             <div class="search-box">
                 <input type="search" @keyup.enter="$emit('search')" placeholder="Inserisci il titolo" id="searchBar" v-model="store.searchKey">
