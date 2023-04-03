@@ -61,12 +61,12 @@ export default {
                     </div>
                 </div>
                 <div class="flip-card-back">
-                    <li class="content"><strong>Titolo:</strong> {{ title }}</li>
-                    <li class="content"><strong>Titolo originale:</strong> {{ originalTitle }}</li>
+                    <li class="content"><strong>Title:</strong> {{ title }}</li>
+                    <li class="content"><strong>Original Title:</strong> {{ originalTitle }}</li>
                     <li class="content overview"><strong>Overview:</strong> {{ info.overview }}</li>
-                    <li class="content"><strong>Lingua originale:</strong><country-flag :country='getLanguage'
+                    <li class="content"><strong>Original language:</strong><country-flag :country='getLanguage'
                             size='small' /></li>
-                    <li class="content"><strong>Voto:</strong> {{ getVote }}
+                    <li class="content"><strong>Vote:</strong> {{ getVote }}
                         <font-awesome-icon icon="fa-solid fa-star" v-for="n in getVote" />
                         <font-awesome-icon icon="fa-regular fa-star" v-for="n in 5 - getVote" />
                     </li>
